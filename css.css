@@ -1,0 +1,39 @@
+.itemDisplay {
+    background-color:#393939;
+    color:white;
+    font-family:Segoe UI;
+    box-sizing: border-box;
+    height:17vw;
+    width:22vw!important;
+    font-size:1vw;
+    margin:10px;
+    float:left;
+}
+.itemText {
+    margin:0.5vw;
+}
+.setupAddButton {
+    font-size:0.25vs;
+    width:5vs;
+    align-self: center;
+    margin:5px
+}
+.setupRemoveButton {
+    font-size:0.25vs;
+    width:5vs;
+    align-self: center;
+    margin:5px;
+}
+.buttonDisplay {
+    border-style:outset;
+    margin:0.25vw;
+    width:8vw;
+}
+.layoutDisplay {
+    margin:0.25vw;
+    height:2vw;
+    width:7vw;
+}
+.layoutText {
+    margin:0.1vw;
+}
