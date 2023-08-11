@@ -27,12 +27,12 @@
 .buttonDisplay {
     border-style:outset;
     margin:0.25vw;
-    width:8vw;
+    width:10vw;
 }
 .layoutDisplay {
     margin:0.25vw;
     height:2vw;
-    width:7vw;
+    width:8vw;
 }
 .layoutText {
     margin:0.1vw;

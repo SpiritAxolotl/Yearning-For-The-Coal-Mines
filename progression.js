@@ -7,6 +7,7 @@ function ascend() {
         setup = [];
         hasDropper = false;
         hasFurnace = false;
+        changeLengthDisplay()
         setSetupValue();
     var skips = 0;
     var multi = new Decimal(100);
@@ -23,7 +24,7 @@ function ascend() {
         gatherItems(rarities[i]).changeAmt(1);
     }
     document.getElementById("moneyDisplay").innerHTML = "0";
-    document.getElementById("ascensionButton").innerHTML = "Ascend: " + formatNumber(ascendPrice);
+    document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
 }
 }
 function revive() {
