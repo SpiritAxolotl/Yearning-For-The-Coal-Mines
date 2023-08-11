@@ -107,7 +107,8 @@ function addToSetup(item, parent) {
             return 0;
         }
         if (tempItem.usage == 'upgrader') {
-            if (hasDropper && hasFurnace) {
+            if (setup.length < 76) {
+                if (hasDropper && hasFurnace) {
                 setup.splice(setup.length - 1, 0, tempItem);
                 tempItem.changeAmt(-1);
                 tempItem.changePlaced(1);
@@ -117,6 +118,9 @@ function addToSetup(item, parent) {
           }, 100);
             }
             setSetupValue();
+            return 0;
+            }
+            
         }
     } else {
         parent.style.backgroundColor = "red";
