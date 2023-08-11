@@ -42,7 +42,7 @@ const slowLoad = async (num, button) => {
         if (setup[0].usage == 'dropper') {
             hasDropper = true;
         }
-        if (setup[setup.length - 1].usage = "Processor") {
+        if (setup[setup.length - 1].usage = "processor") {
             hasFurnace = true;
         }
     setSetupValue();
