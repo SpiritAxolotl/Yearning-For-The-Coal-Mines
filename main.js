@@ -58,19 +58,14 @@ function addToSetup(item, parent) {
             setup[0] = tempItem;
             tempItem.changeAmt(-1);
             tempItem.changePlaced(1);
-            parent.style.backgroundColor = "green";
-                setTimeout(() => {
-                    parent.style.backgroundColor = "buttonface";
-              }, 100);
+            flashGreen(parent);
         } else {
             setup[0] = tempItem;
             tempItem.changeAmt(-1);
             tempItem.changePlaced(1);
             hasDropper = true;
-            parent.style.backgroundColor = "green";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+            flashGreen(parent);
+            changeLengthDisplay();
         }
         setSetupValue();
         return 0;
@@ -83,50 +78,37 @@ function addToSetup(item, parent) {
                     setup[setup.length - 1] = tempItem;
                     tempItem.changeAmt(-1);
                     tempItem.changePlaced(1)
-                    parent.style.backgroundColor = "green";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+                    flashGreen(parent);
                 } else {
                     setup[setup.length] = tempItem;
                     tempItem.changeAmt(-1);
                     tempItem.changePlaced(1);
                     hasFurnace = true;
-                    parent.style.backgroundColor = "green";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+                    flashGreen(parent);
+          changeLengthDisplay()
                 }
             } else {
-                parent.style.backgroundColor = "red";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+                flashRed(parent);
             }
             setSetupValue();
             return 0;
         }
         if (tempItem.usage == 'upgrader') {
-            if (setup.length < 76) {
+            if (setup.length < 75) {
                 if (hasDropper && hasFurnace) {
                 setup.splice(setup.length - 1, 0, tempItem);
                 tempItem.changeAmt(-1);
                 tempItem.changePlaced(1);
-                parent.style.backgroundColor = "green";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+                flashGreen(parent);
             }
+            changeLengthDisplay()
             setSetupValue();
             return 0;
             }
             
         }
     } else {
-        parent.style.backgroundColor = "red";
-            setTimeout(() => {
-                parent.style.backgroundColor = "buttonface";
-          }, 100);
+        flashRed(parent);
     }
     
 }
@@ -138,19 +120,15 @@ function removeFromSetup(item, parent) {
                 setup[i].changeAmt(1);
                 setup[i].changePlaced(-1);
                 setup.splice(i, 1);
-                parent.style.backgroundColor = "green";
-                setTimeout(() => {
-                    parent.style.backgroundColor = "buttonface";
-              }, 100);
+                flashGreen(parent);
                 setSetupValue();
-                break;
+                changeLengthDisplay();
+                return 0;
             }
         }
+        flashRed(parent);
     } else {
-        parent.style.backgroundColor = "red";
-        setTimeout(() => {
-            parent.style.backgroundColor = "buttonface";
-      }, 100);
+        flashRed(parent);
     }
 }
 function sortItemList(items) {

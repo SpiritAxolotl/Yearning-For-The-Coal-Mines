@@ -70,3 +70,18 @@ function updateItemDisplay(name, amt, placed) {
     }
     document.getElementById(name + "amtdisplay").innerHTML = amt + " Owned. " + placed + " Placed.";
 }
+function changeLengthDisplay() {
+    document.getElementById("placedDisplay").innerHTML = setup.length + "/75 Placed"
+}
+function flashGreen(element) {
+    element.style.backgroundColor = "green";
+    setTimeout(() => {
+        element.style.backgroundColor = "buttonface";
+  }, 100);
+}
+function flashRed(element) {
+    element.style.backgroundColor = "red";
+    setTimeout(() => {
+        element.style.backgroundColor = "buttonface";
+  }, 100);
+}
