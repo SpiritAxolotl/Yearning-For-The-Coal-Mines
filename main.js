@@ -48,8 +48,8 @@ sortItemList(items);
             document.getElementById('items').appendChild(createElements(tieredItems[r][c]));
         }
     }
-    items[locateItemIndex("basicdropper")].changeAmt(1);
-    items[locateItemIndex("basicprocessor")].changeAmt(1);
+    items[locateItemIndex("basicdropper")].changeAmt(75);
+    items[locateItemIndex("basicprocessor")].changeAmt(75);
     items[locateItemIndex("basicupgrader")].changeAmt(75);
 }
 var hasDropper = false;

@@ -9,6 +9,7 @@ function saveLayout(num) {
             layouts[num][i] = setup[i];
         }
         document.getElementById("layout" + num + "Items").innerHTML = layouts[num].length + "/75";
+        console.log(layouts);
     }
 }
 function placeLayout(num, button) {
@@ -32,8 +33,9 @@ const sleep2 = (time) => {
   
 const slowLoad = async (num, button) => {
     for (var i = 1; i < layouts[num].length - 1; i++) {
+        console.log("entered");
         if (layouts[num][i].amt > 0) {
-           await sleep(25);
+        await sleep(25);
         setup.push(layouts[num][i])
         layouts[num][i].changeAmt(-1);
         layouts[num][i].changePlaced(1); 
@@ -42,28 +44,34 @@ const slowLoad = async (num, button) => {
         
     }
     var temp;
-    if (layouts[num][0].amt > 0) {
+    temp = layouts[num][0];
+    if (temp.amt > 0 && temp.usage == "dropper") {
         temp = layouts[num][0];
         setup.splice(0, 0, temp);
         temp.changeAmt(-1);
         temp.changePlaced(1);
-    } else {
+        console.log("here1")
+    } else if (temp.usage == "dropper"){
         temp = items[locateItemIndex("basicdropper")];
         setup.splice(0, 0, temp);
         temp.changeAmt(-1);
         temp.changePlaced(1);
+        console.log("here2")
     }
     changeLengthDisplay();
-    if (layouts[num][layouts[num].length - 1].amt > 0) {
+    temp = layouts[num][layouts[num].length - 1];
+    if (temp.amt > 0 && temp.usage == "processor") {
         temp = layouts[num][layouts[num].length - 1];
         setup.push(temp);
         temp.changeAmt(-1);
         temp.changePlaced(1);
-    } else {
+        console.log("here3")
+    } else if (temp.usage == "processor"){
         temp = items[locateItemIndex("basicprocessor")];
         setup.push(temp);
         temp.changeAmt(-1);
         temp.changePlaced(1);
+        console.log("here4")
     }
     changeLengthDisplay();
     var temp;
@@ -72,7 +80,7 @@ const slowLoad = async (num, button) => {
         if (setup[0].usage == 'dropper') {
             hasDropper = true;
         }
-        if (setup[setup.length - 1].usage = "processor") {
+        if (setup[setup.length - 1].usage == "processor") {
             hasFurnace = true;
         }
     setSetupValue();
