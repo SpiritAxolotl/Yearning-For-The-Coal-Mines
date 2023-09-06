@@ -16,6 +16,9 @@ class Ore {
         return false;
     }
     goThroughSetup(setup) {
+        if (setup.length == 0) {
+            return 0;
+        }
         this.amt = new Decimal(1);
         for (var i = 0; i < setup.length; i++) {
             this.amt = setup[i].upgrade(this.amt);

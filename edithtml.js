@@ -85,3 +85,13 @@ function flashRed(element) {
         element.style.backgroundColor = "buttonface";
   }, 100);
 }
+function setProgressionValues() {
+    document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
+    document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + lives;
+    document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
+    document.getElementById("reviveDisplay").innerHTML = "Revivals: " + revivals;
+    document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice);
+    document.getElementById("renewDisplay").innerHTML = "Renewals: " + renewals;
+    document.getElementById("reawakenButton").innerHTML = "Reawaken: " + "<br>" + formatNumber(awakenPrice);
+    document.getElementById("reawakenDisplay").innerHTML = "Reawakens: " + awakens;
+}

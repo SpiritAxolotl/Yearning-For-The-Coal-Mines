@@ -7,6 +7,7 @@
     <script src="layouts.js"></script>
     <script src="createItems.js"></script>
     <script src="main.js"></script>
+    <script src="commands.js"></script>
     <link rel="stylesheet" href="css.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -19,12 +20,18 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-2">
-            <p style="position:fixed;" id="moneyDisplay">0</p>
-            <br>
-            <br>
+                <div id="uiDisplay">
+                    <p id="moneyDisplay">0</p>
             <button onclick="ascend()" id="ascensionButton" class="buttonDisplay">Ascend: <br>25</button>
+            <button onclick="revive()" id="reviveButton" class="buttonDisplay">Revive: <br>500</button>
+            <button onclick="renew()" id="renewButton" class="buttonDisplay">Renew: <br>10</button>
+            <button onclick="awaken()" id="reawakenButton" class="buttonDisplay">Reawaken: <br>5</button>
+            <p id="ascensionDisplay">Ascensions: 0</p>
+            <p id="reviveDisplay">Revivals: 0</p>
+            <p id="renewDisplay">Renewals: 0</p>
+            <p id="reawakenDisplay">Reawakens: 0</p>
+            
             <p id="placedDisplay">0/75 Placed</p>
             <div class="buttonDisplay text-center">
                 <p class="layoutText">Layout 1</p>
@@ -47,6 +54,8 @@
                 <br>
                 <button class="layoutDisplay" onclick = "placeLayout(2)">Place</button>
             </div>
+                </div>
+            
             </div>
 
             <div id="items" class="col-10">

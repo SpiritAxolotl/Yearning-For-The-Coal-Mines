@@ -3,8 +3,8 @@
     color:white;
     font-family:Segoe UI;
     box-sizing: border-box;
-    height:17vw;
-    width:22vw!important;
+    height:18vw;
+    width:21vw!important;
     font-size:1vw;
     margin:10px;
     float:left;
@@ -36,4 +36,8 @@
 }
 .layoutText {
     margin:0.1vw;
+}
+#uiDisplay {
+    position: fixed;
+    width:20vw;
 }

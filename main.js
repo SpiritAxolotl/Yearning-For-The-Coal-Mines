@@ -1,8 +1,17 @@
 var items = [];
 var setup = [];
 let money = new Decimal(0);
-let ascendPrice = new Decimal(25);
+var lives = new Decimal(0);
+var revivals = new Decimal("0");
+var renewals = new Decimal("0");
+var awakens = new Decimal("0");
+let ascendPrice = new Decimal("25");
+var revivePrice = new Decimal("500");
+var renewalPrice = new Decimal("10");
+var awakenPrice = new Decimal("5");
+var luckBoost = 1;
 function init() {
+    loopMoney(true);
 createAllItems();
 testOre = new Ore();
 sortItemList(items);
@@ -179,6 +188,7 @@ function sortByTier(id, arr) {
 let setupValue = new Decimal(0);
 function setSetupValue() {
         setupValue = new Decimal(testOre.goThroughSetup(setup));
+        document.getElementById("moneyDisplay").innerHTML = formatNumber(money) + "<br>" + "+" + formatNumber(setupValue);
         moneyTimer();
     
 }
@@ -190,7 +200,7 @@ let myTimer = null;
 function moneyTimer() {
     clearInterval(myTimer);
     if (hasDropper && hasFurnace) {
-        myTimer = setInterval(addSetupValueToMoney, 1000)
+        myTimer = setInterval(addSetupValueToMoney, 100)
     }
 }
 const suffixes = ["", "k", "M", "B", "T", "qd", "Qn", "sx", "Sp", "O", "N", "de", "Ud", "DD", "tdD", "qdD", "QnD", "sxD", "SpD", "OcD", "NvD", "Vgn", "UVg", "DVg", "TVg", "qtV", "QnV", "SeV", "SPG", "OVG", "NVG", "TGN", "UTG", "DTG", "tsTG", "qtTG", "QnTG", "ssTG", "SpTG", "OcTg", "NoTG", "QdDR", "uQDR", "dQDR", "tQDR", "qdQDR", "QnQDR", "sxQDR", "SpQDR", "OQDDr", "NQDDr", "qQGNT", "uQGNT", "dQGNT", "tQGNT", "qdQGNT", "QnQGNT", "sxQGNT", "SpQGNT", "OQQGNT", "NQQGNT", "SXGNTL", "USXGNTL", "DSXGNTL", "TSXGNTL", "QTSXGNTL", "QNSXGNTL", "SXSXGNTL", "SPSXGNTL", "OSXGNTL", "NVSXGNTL", "SPTGNTL", "USPTGNTL", "DSPTGNTL", "TSPTGNTL", "QTSPTGNTL", "QNSPTGNTL", "SXSPTGNTL", "SPSPTGNTL", "OSPTGNTL", "NVSPTGNTL", "OTGNTL", "UOTGNTL", "DOTGNTL", "TOTGNTL", "QTOTGNTL", "QNOTGNTL", "SXOTGNTL", "SPOTGNTL", "OTOTGNTL", "NVOTGNTL", "NONGNTL", "UNONGNTL", "DNONGNTL", "TNONGNTL", "QTNONGNTL", "QNNONGNTL", "SXNONGNTL", "SPNONGNTL", "OTNONGNTL", "NONONGNTL", "CENT"];
@@ -202,8 +212,24 @@ function formatNumber(num) {
     }
     return Math.floor(num / Math.pow(1000, (Math.floor(Math.log10(num) / 3))) * 100) / 100 + suffixes[Math.floor(Math.log10(num) / 3)];
     } else {
-        console.log(num.exponent);
-        return new Decimal(num).toString();
+        return num.toExponential(2, num.ROUND_FLOOR);
     }
     
+}
+function withdrawAll() {
+    for (var i = 0; i < setup.length; i++) {
+        setup[i].changePlaced(-1);
+        setup[i].changeAmt(1);
+    }
+    hasDropper = false;
+    hasFurnace = false;
+    setup = [];
+    changeLengthDisplay();
+    setSetupValue();
+}
+function simulateLives() {
+    for (var i = 0; i < 100000; i++) {
+        money = new Decimal("1e+1000000");
+        ascend();
+    }
 }
