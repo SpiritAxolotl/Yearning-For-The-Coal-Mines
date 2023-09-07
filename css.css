@@ -4,11 +4,10 @@
     font-family:Segoe UI;
     box-sizing: border-box;
     height:18vw;
-    width:17vw!important;
+    width:21vw!important;
     font-size:1vw;
     margin:10px;
     float:left;
-    border-top-style:solid ;
 }
 .itemText {
     margin:0.5vw;
@@ -42,13 +41,20 @@
     position: fixed;
     width:15vw;
     border-right-style:solid;
+    top:6.2vh;
     height:1000px;
     overflow: auto;
     background-color: white;
-    margin-top:0vw;
+}
+#items {
+    float:right;
+    margin-top:6vh;
 }
 .valueDisplay {
     border-bottom-style:solid;
+    background-color: white;
+    position: fixed;
+    float:left;
 }
 .value {
     float:left;
