@@ -85,13 +85,30 @@ function flashRed(element) {
         element.style.backgroundColor = "buttonface";
   }, 100);
 }
-function setProgressionValues() {
+function setProgressionValues(amt) {
+    if (amt == 1) {
+        document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
+        document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
+    } else if (amt == 2) {
+        document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
+        document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
+        document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
+        document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
+    } else if (amt == 3) {
     document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
-    document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + lives;
+    document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
     document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
-    document.getElementById("reviveDisplay").innerHTML = "Revivals: " + revivals;
+    document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
     document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice);
-    document.getElementById("renewDisplay").innerHTML = "Renewals: " + renewals;
-    document.getElementById("reawakenButton").innerHTML = "Reawaken: " + "<br>" + formatNumber(awakenPrice);
-    document.getElementById("reawakenDisplay").innerHTML = "Reawakens: " + awakens;
+    document.getElementById("renewDisplay").innerHTML = "Renewals: " + formatNumber(renewals);
+    } else {
+        document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
+        document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
+        document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
+        document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
+        document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice);
+        document.getElementById("renewDisplay").innerHTML = "Renewals: " + formatNumber(renewals);
+        document.getElementById("reawakenButton").innerHTML = "Reawaken: " + "<br>" + formatNumber(awakenPrice);
+        document.getElementById("reawakenDisplay").innerHTML = "Reawakens: " + formatNumber(awakens);
+    }
 }

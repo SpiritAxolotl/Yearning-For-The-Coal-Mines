@@ -24,8 +24,8 @@ function ascend() {
     for (var i = 0; i < rarities.length; i++) {
         gatherItems(rarities[i], ["Ascension", "Supernatural", "Indescribable"]).changeAmt(1);
     }
-    document.getElementById("moneyDisplay").innerHTML = "0";
-    setProgressionValues();
+    document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
+    setProgressionValues(1);
 }
 }
 function revive() {
@@ -42,8 +42,8 @@ function revive() {
         items[locateItemIndex("basicdropper")].changeAmt(1);
         items[locateItemIndex("basicprocessor")].changeAmt(1);
         items[locateItemIndex("basicupgrader")].changeAmt(1);
-        document.getElementById("moneyDisplay").innerHTML = "0";
-        setProgressionValues();
+        document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
+        setProgressionValues(2);
     }
 }
 function renew() {
@@ -61,8 +61,8 @@ function renew() {
         items[locateItemIndex("basicdropper")].changeAmt(1);
         items[locateItemIndex("basicprocessor")].changeAmt(1);
         items[locateItemIndex("basicupgrader")].changeAmt(1);
-        document.getElementById("moneyDisplay").innerHTML = "0";
-        setProgressionValues();
+        document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
+        setProgressionValues(3);
     }
 }
 function awaken() {
@@ -81,8 +81,8 @@ function awaken() {
         items[locateItemIndex("basicdropper")].changeAmt(1);
         items[locateItemIndex("basicprocessor")].changeAmt(1);
         items[locateItemIndex("basicupgrader")].changeAmt(1);
-        document.getElementById("moneyDisplay").innerHTML = "0";
-        setProgressionValues()
+        document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
+        setProgressionValues(4);
     }
 }
 let probabilityTable;

@@ -20,17 +20,22 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2" style="overflow:scroll;">
+            <div class="col-12 valueDisplay">
+            <p id="ascensionDisplay" class="value">Ascensions: 0</p>
+            <p id="reviveDisplay" class="value">Revivals: 0</p>
+            <p id="renewDisplay" class="value">Renewals: 0</p>
+            <p id="reawakenDisplay" class="value">Reawakens: 0</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
                 <div id="uiDisplay">
                     <p id="moneyDisplay">0</p>
             <button onclick="ascend()" id="ascensionButton" class="buttonDisplay">Ascend: <br>25</button>
             <button onclick="revive()" id="reviveButton" class="buttonDisplay">Revive: <br>500</button>
             <button onclick="renew()" id="renewButton" class="buttonDisplay">Renew: <br>10</button>
             <button onclick="awaken()" id="reawakenButton" class="buttonDisplay">Reawaken: <br>5</button>
-            <p id="ascensionDisplay">Ascensions: 0</p>
-            <p id="reviveDisplay">Revivals: 0</p>
-            <p id="renewDisplay">Renewals: 0</p>
-            <p id="reawakenDisplay">Reawakens: 0</p>
+
             
             <p id="placedDisplay">0/75 Placed</p>
             <div class="buttonDisplay text-center">
@@ -56,10 +61,9 @@
             </div>
             <p>v1.01 ALPHA</p>
                 </div>
-            
             </div>
-
-            <div id="items" class="col-10">
+            <div class="col-1"></div>
+            <div id="items" class="col-9">
             
             </div>
         </div>
