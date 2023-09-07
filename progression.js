@@ -11,7 +11,7 @@ function ascend() {
         setSetupValue();
     var skips = 0;
     var multi = new Decimal("100");
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 2000; i++) {
         if (money.greaterThan(ascendPrice.multiply(multi))) {
             skips++;
             multi = multi.multiply(new Decimal("100"));
@@ -50,6 +50,7 @@ function renew() {
     if (revivals.greaterThanOrEqualTo(renewalPrice)) {
         lives = new Decimal("0");
         revivals = new Decimal("0");
+        revivePrice = new Decimal("500");
         renewals = renewals.add(new Decimal("1"));
         renewalPrice = renewalPrice.add(new Decimal("1"));
         ascendPrice = new Decimal("25");
@@ -69,6 +70,7 @@ function awaken() {
     if (renewals.greaterThanOrEqualTo(awakenPrice)) {
         lives = new Decimal("0");
         revivals = new Decimal("0");
+        revivePrice = new Decimal("500");
         renewals = new Decimal("0");
         awakens = awakens.add(new Decimal("1"));
         awakenPrice = awakenPrice.add(new Decimal("1"));
