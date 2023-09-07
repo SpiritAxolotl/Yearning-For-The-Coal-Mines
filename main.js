@@ -209,7 +209,7 @@ function formatNumber(num) {
         num = Number(num.toString());
       if (num < 1000) {
         return Math.floor(num * 100) / 100;
-    }
+        }
     return Math.floor(num / Math.pow(1000, (Math.floor(Math.log10(num) / 3))) * 100) / 100 + suffixes[Math.floor(Math.log10(num) / 3)];
     } else {
         return num.toExponential(2, num.ROUND_FLOOR);
