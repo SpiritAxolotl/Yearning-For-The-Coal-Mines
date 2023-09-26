@@ -22,10 +22,14 @@ function ascend() {
     lives = lives.add(new Decimal(skips + 1));
     let rarities = getRarityToGive("Ascension", (Math.floor(skips / 10) + 1));
     for (var i = 0; i < rarities.length; i++) {
-        gatherItems(rarities[i], ["Ascension", "Supernatural", "Indescribable"]).changeAmt(1);
+        let givingItem = gatherItems(rarities[i], ["Ascension", "Supernatural", "Indescribable"]);
+        givingItem.changeAmt(1);
+        saveData(givingItem.getItemName());
     }
     document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
     setProgressionValues(1);
+    saveAmounts();
+    saveCosts();
 }
 }
 function revive() {
@@ -38,12 +42,14 @@ function revive() {
         withdrawAll();
         deleteItems(["Ascension"]);
         let rarities = getRarityToGive("Revival", 1);
-        gatherItems(rarities[0], "Revival").changeAmt(1);
-        items[locateItemIndex("basicdropper")].changeAmt(1);
-        items[locateItemIndex("basicprocessor")].changeAmt(1);
-        items[locateItemIndex("basicupgrader")].changeAmt(1);
+        let givingItem = gatherItems(rarities, "Revival");
+        givingItem.changeAmt(1);
+        saveData(givingItem.getItemName());
         document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
         setProgressionValues(2);
+        giveBasics();
+        saveAmounts();
+        saveCosts();
     }
 }
 function renew() {
@@ -58,12 +64,14 @@ function renew() {
         withdrawAll();
         deleteItems(["Ascension", "Supernatural"]);
         let rarities = getRarityToGive("Renewal", 1);
-        gatherItems(rarities[0], "Renewal").changeAmt(1);
-        items[locateItemIndex("basicdropper")].changeAmt(1);
-        items[locateItemIndex("basicprocessor")].changeAmt(1);
-        items[locateItemIndex("basicupgrader")].changeAmt(1);
+        let givingItem = gatherItems(rarities, "Renewal");
+        givingItem.changeAmt(1);
+        saveData(givingItem.getItemName());
         document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
         setProgressionValues(3);
+        giveBasics();
+        saveAmounts();
+        saveCosts();
     }
 }
 function awaken() {
@@ -79,12 +87,14 @@ function awaken() {
         withdrawAll();
         deleteItems(["Ascension", "Supernatural", "Revival"]);
         let rarities = getRarityToGive("Awakened", 1);
-        gatherItems(rarities[0], "Awakened").changeAmt(1);
-        items[locateItemIndex("basicdropper")].changeAmt(1);
-        items[locateItemIndex("basicprocessor")].changeAmt(1);
-        items[locateItemIndex("basicupgrader")].changeAmt(1);
+        let givingItem = gatherItems(rarities, "Awakened");
+        givingItem.changeAmt(1);
+        saveData(givingItem.getItemName());
         document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
         setProgressionValues(4);
+        giveBasics();
+        saveAmounts();
+        saveCosts();
     }
 }
 let probabilityTable;
@@ -126,7 +136,7 @@ function getRarityToGive(type, amt) {
   for (var i = 0; i < amt; i++) {
     let summedProbability = 0;
     let chosenValue = Math.random();
-    chosenValue *= luckBoost;
+    chosenValue /= luckBoost;
     for (var propertyName in probabilityTable) {
       summedProbability += probabilityTable[propertyName];
       if (chosenValue < summedProbability) {
@@ -151,6 +161,15 @@ function deleteItems(tiers) {
     for (var i = 0; i < items.length; i++) {
         if (tiers.indexOf(items[i].tier) != -1) {
             items[i].changeAmt(-(items[i].amt));
+            saveData(items[i].getItemName())
         }
     }
+}
+function giveBasics() {
+    items[locateItemIndex("basicdropper")].changeAmt(1);
+    items[locateItemIndex("basicprocessor")].changeAmt(1);
+    items[locateItemIndex("basicupgrader")].changeAmt(1);
+    saveData("basicdropper");
+    saveData("basicprocessor");
+    saveData("basicupgrader");
 }

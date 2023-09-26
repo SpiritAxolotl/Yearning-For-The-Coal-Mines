@@ -4,23 +4,22 @@ var layouts = [
     []
 ]
 function saveLayout(num) {
-    if (setup.length < 76) {
+    if (setup.length < 76 && (hasDropper && hasFurnace)) {
+        layouts[num] = [];
         for (var i = 0; i < setup.length; i++) {
             layouts[num][i] = setup[i];
         }
         document.getElementById("layout" + num + "Items").innerHTML = layouts[num].length + "/75";
-        console.log(layouts);
+        saveLayouts();
     }
 }
 function placeLayout(num, button) {
     if (layouts[num].length > 0) {
         button.disabled = true;
         withdrawAll();
-        for (var i = 0; i < setup.length; i++) {
-            setup[i].changePlaced(-1);
-            setup[i].changeAmt(1);
-        }
-        slowLoad(num, button);
+        setTimeout(() => {
+            slowLoad(num, button);
+          }, "25");
     }
 }
 
@@ -32,57 +31,54 @@ const sleep2 = (time) => {
 }
   
 const slowLoad = async (num, button) => {
+    console.log(items);
+    var temp = layouts[num][0];
+    if (temp.usage == "dropper") {
+        if (temp.amt > 0) {
+        setup[0] = temp;
+        temp.changeAmt(-1);
+        temp.changePlaced(1);
+        saveData(temp.getItemName());
+        } else {
+            temp = items[locateItemIndex("basicdropper")];
+            setup[0] = temp;
+            temp.changeAmt(-1);
+            temp.changePlaced(1);
+            saveData(temp.getItemName());
+        } 
+    }
     for (var i = 1; i < layouts[num].length - 1; i++) {
+        console.log(layouts[num][i]);
         console.log("entered");
         if (layouts[num][i].amt > 0) {
+            console.log("entered2");
         await sleep(25);
-        setup.push(layouts[num][i])
+        setup.push(layouts[num][i]);
         layouts[num][i].changeAmt(-1);
-        layouts[num][i].changePlaced(1); 
-        changeLengthDisplay();
-        }
-        
+        layouts[num][i].changePlaced(1);
+        saveData(layouts[num][i].getItemName());
+        }  
     }
-    var temp;
-    temp = layouts[num][0];
-    if (temp.amt > 0 && temp.usage == "dropper") {
-        temp = layouts[num][0];
-        setup.splice(0, 0, temp);
-        temp.changeAmt(-1);
-        temp.changePlaced(1);
-        console.log("here1")
-    } else if (temp.usage == "dropper"){
-        temp = items[locateItemIndex("basicdropper")];
-        setup.splice(0, 0, temp);
-        temp.changeAmt(-1);
-        temp.changePlaced(1);
-        console.log("here2")
-    }
-    changeLengthDisplay();
-    temp = layouts[num][layouts[num].length - 1];
-    if (temp.amt > 0 && temp.usage == "processor") {
-        temp = layouts[num][layouts[num].length - 1];
+    var temp = layouts[num][layouts[num].length - 1];
+    if (temp.usage == "processor") {
+        if (temp.amt > 0) {
         setup.push(temp);
         temp.changeAmt(-1);
         temp.changePlaced(1);
-        console.log("here3")
-    } else if (temp.usage == "processor"){
-        temp = items[locateItemIndex("basicprocessor")];
-        setup.push(temp);
-        temp.changeAmt(-1);
-        temp.changePlaced(1);
-        console.log("here4")
+        saveData(temp.getItemName());
+        } else {
+            temp = items[locateItemIndex("basicprocessor")];
+            setup.push(temp);
+            temp.changeAmt(-1);
+            temp.changePlaced(1);
+            saveData(temp.getItemName());
+        } 
     }
-    changeLengthDisplay();
-    var temp;
-        hasDropper = false;
-        hasFurnace = false;
-        if (setup[0].usage == 'dropper') {
-            hasDropper = true;
-        }
-        if (setup[setup.length - 1].usage == "processor") {
-            hasFurnace = true;
-        }
+    hasDropper = true;
+    hasFurnace = true;
+    localStorage.setItem("setupReqs", JSON.stringify([hasDropper, hasFurnace]));
+    saveSetup();
     setSetupValue();
+    changeLengthDisplay();
     button.disabled = false;
   }

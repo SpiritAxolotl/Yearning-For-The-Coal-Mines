@@ -49,6 +49,9 @@ class Item {
         this.placed += num;
         updateItemDisplay(this.getItemName(), this.amt, this.placed);
     }
+    changeAstralAmount(num) {
+        this.astralAmt += num;
+    }
     upgrade(value) {
 
         return value.multiply(this.multiplier);

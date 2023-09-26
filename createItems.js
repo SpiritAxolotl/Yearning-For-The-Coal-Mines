@@ -1,4 +1,4 @@
-function createAllItems() {
+ function createAllItems() {
     items.push(new Item({itemName:'Basic Dropper',multiplier:2,tier:'Ascension',rarity:12,usage:'dropper'}));
     items.push(new Item({itemName:'Candy Materializer',multiplier:25,tier:'Ascension',rarity:1,usage:'dropper'}));
     items.push(new Item({itemName:'Antimatter Drill',multiplier:150,tier:'Revival',rarity:1,usage:'dropper'}));
@@ -85,8 +85,8 @@ function createAllItems() {
     items.push(new Buffgrader({itemName:'Reapers Scythe',multiplier:75,buffs:'eerie',tier:'Supernatural',rarity:0.15,usage:'upgrader'}));
     items.push(new Buffgrader({itemName:'Reapers Vengeance',multiplier:75,buffs:'eerie',tier:'Supernatural',rarity:0.15,usage:'upgrader'}));
     items.push(new Item({itemName:'Ultima Hypocrita',multiplier:1.23,tier:'Ascension',rarity:9,usage:'upgrader'}));
-    items.push(new EffectGiver({itemName:'Bnuuygirl Bnuuyifier',multiplier:1000000000000,effect:'nature',tier:'Indescribable',rarity:1e-7,usage:'upgrader'}));
-    items.push(new EffectGiver({itemName:'Catgirl Catgirlifier',multiplier:1000000000000,effect:'nature',tier:'Indescribable',rarity:1e-7,usage:'upgrader'}));
+    items.push(new EffectGiver({itemName:'Bnuuygirl Bnuuyifier',multiplier:1000000000000,effect:'nature',tier:'Indescribable',rarity:0.0000001,usage:'upgrader'}));
+    items.push(new EffectGiver({itemName:'Catgirl Catgirlifier',multiplier:1000000000000,effect:'nature',tier:'Indescribable',rarity:0.0000001,usage:'upgrader'}));
     items.push(new Item({itemName:'Sacrificial Armageddon',multiplier:25000000,tier:'Awakened',rarity:3,usage:'upgrader'}));
     items.push(new Buffgrader({itemName:'Cosmic Destructor',multiplier:750000000,buffs:'destruction',tier:'Awakened',rarity:1,usage:'upgrader'}));
     items.push(new EffectGiver({itemName:'Otherworldly Creature',multiplier:90000000,effect:'eerie',tier:'Awakened',rarity:2,usage:'upgrader'}));
@@ -104,6 +104,4 @@ function createAllItems() {
     items.push(new Item({itemName:'Quartz Enricher',multiplier:1.5,tier:'Ascension',rarity:4,usage:'upgrader'}));
     items.push(new Buffgrader({itemName:'Bomb Factory',multiplier:100,buffs:'destruction',tier:'Supernatural',rarity:0.1,usage:'upgrader'}));
     items.push(new EffectGiver({itemName:'Eternal Damnation',multiplier:667000000,effect:'eerie',tier:'Awakened',rarity:1,usage:'upgrader'}));
-    
 }
-
