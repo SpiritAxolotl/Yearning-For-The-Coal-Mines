@@ -1,14 +1,12 @@
 function ascend() {
     if (money.greaterThan(new Decimal(ascendPrice))) {
-        for (var i = 0; i < setup.length; i++) {
-        setup[i].changePlaced(-1);
-        setup[i].changeAmt(1);
-        }
+        withdrawAll();
         setup = [];
         hasDropper = false;
         hasFurnace = false;
         changeLengthDisplay();
         setSetupValue();
+        saveSetup();
     var skips = 0;
     var multi = new Decimal("100");
     for (var i = 0; i < 2000; i++) {
@@ -50,6 +48,7 @@ function revive() {
         giveBasics();
         saveAmounts();
         saveCosts();
+        saveSetup();
     }
 }
 function renew() {
@@ -72,6 +71,7 @@ function renew() {
         giveBasics();
         saveAmounts();
         saveCosts();
+        saveSetup();
     }
 }
 function awaken() {
@@ -95,6 +95,7 @@ function awaken() {
         giveBasics();
         saveAmounts();
         saveCosts();
+        saveSetup();
     }
 }
 let probabilityTable;
