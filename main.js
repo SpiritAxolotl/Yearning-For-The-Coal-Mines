@@ -11,7 +11,7 @@ var renewalPrice = new Decimal("10");
 var awakenPrice = new Decimal("5");
 var luckBoost = 1;
 function init() {
-    loopMoney(true);
+//loopMoney(true);
 createAllItems();
 testOre = new Ore();
 sortItemList(items);
