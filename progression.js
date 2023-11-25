@@ -9,7 +9,7 @@ function ascend() {
         saveSetup();
     var skips = 0;
     var multi = new Decimal("100");
-    for (var i = 0; i < 2000; i++) {
+    for (var i = 0; i < 10000; i++) {
         if (money.greaterThan(ascendPrice.multiply(multi))) {
             skips++;
             multi = multi.multiply(new Decimal("100"));
@@ -21,6 +21,9 @@ function ascend() {
     let rarities = getRarityToGive("Ascension", (Math.floor(skips / 10) + 1));
     for (var i = 0; i < rarities.length; i++) {
         let givingItem = gatherItems(rarities[i], ["Ascension", "Supernatural", "Indescribable"]);
+        if (Math.floor(Math.random() * 500) == 250) {
+            givingItem.changeAstralAmount(1);
+        }
         givingItem.changeAmt(1);
         saveData(givingItem.getItemName());
     }

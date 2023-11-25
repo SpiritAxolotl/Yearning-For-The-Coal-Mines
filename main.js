@@ -45,7 +45,7 @@ sortItemList(items);
     }
     for (var r = 0; r < tieredItems.length; r++) {
         for (var c = 0; c < tieredItems[r].length; c++) {
-            document.getElementById('items').appendChild(createElements(tieredItems[r][c]));
+            document.getElementById('allItemsDisplay').appendChild(createElements(tieredItems[r][c]));
         }
     }
     var playedBefore = JSON.parse(localStorage.getItem("playedBefore"));
@@ -178,6 +178,7 @@ function locateItemIndex(target) {
     var y = items.length - 1;
     var reps = 0;
     while (y >= 1) {
+        reps++;
     mid = x + Math.floor((y - x) / 2);
     if (items[mid].getItemName() == target) {
         return mid;
@@ -187,6 +188,10 @@ function locateItemIndex(target) {
         y = mid - 1;
     } else {
         x = mid + 1;
+    }
+    if (reps > 500) {
+        console.log(target);
+        return "ERROR";
     }
  }
  return -1;
@@ -220,7 +225,7 @@ let myTimer = null;
 function moneyTimer() {
     clearInterval(myTimer);
     if (hasDropper && hasFurnace) {
-        myTimer = setInterval(addSetupValueToMoney, 1000)
+        myTimer = setInterval(addSetupValueToMoney, testOre.time)
     }
 }
 const suffixes = ["", "k", "M", "B", "T", "qd", "Qn", "sx", "Sp", "O", "N", "de", "Ud", "DD", "tdD", "qdD", "QnD", "sxD", "SpD", "OcD", "NvD", "Vgn", "UVg", "DVg", "TVg", "qtV", "QnV", "SeV", "SPG", "OVG", "NVG", "TGN", "UTG", "DTG", "tsTG", "qtTG", "QnTG", "ssTG", "SpTG", "OcTg", "NoTG", "QdDR", "uQDR", "dQDR", "tQDR", "qdQDR", "QnQDR", "sxQDR", "SpQDR", "OQDDr", "NQDDr", "qQGNT", "uQGNT", "dQGNT", "tQGNT", "qdQGNT", "QnQGNT", "sxQGNT", "SpQGNT", "OQQGNT", "NQQGNT", "SXGNTL", "USXGNTL", "DSXGNTL", "TSXGNTL", "QTSXGNTL", "QNSXGNTL", "SXSXGNTL", "SPSXGNTL", "OSXGNTL", "NVSXGNTL", "SPTGNTL", "USPTGNTL", "DSPTGNTL", "TSPTGNTL", "QTSPTGNTL", "QNSPTGNTL", "SXSPTGNTL", "SPSPTGNTL", "OSPTGNTL", "NVSPTGNTL", "OTGNTL", "UOTGNTL", "DOTGNTL", "TOTGNTL", "QTOTGNTL", "QNOTGNTL", "SXOTGNTL", "SPOTGNTL", "OTOTGNTL", "NVOTGNTL", "NONGNTL", "UNONGNTL", "DNONGNTL", "TNONGNTL", "QTNONGNTL", "QNNONGNTL", "SXNONGNTL", "SPNONGNTL", "OTNONGNTL", "NONONGNTL", "CENT"];

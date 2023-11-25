@@ -9,6 +9,6 @@ function loopMoney(state) {
 
 }
 function setMoney() {
-    money = new Decimal("1e+10000");
+    money = new Decimal("1e10000000000000");
     document.getElementById("moneyDisplay").innerHTML = "$" + money + "<br>" + "+Inf";
 }

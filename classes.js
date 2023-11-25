@@ -1,7 +1,7 @@
 class Ore {
     constructor() {
         this.amt = new Decimal(1);
-        this.time = setup.length;
+        this.time = 0;
         this.buffedEffects = [];
     }
     addBuffedEffect(effect) {
@@ -16,12 +16,14 @@ class Ore {
         return false;
     }
     goThroughSetup(setup) {
+        this.time = 0;
         if (setup.length == 0) {
             return 0;
         }
         this.amt = new Decimal(1);
         for (var i = 0; i < setup.length; i++) {
             this.amt = setup[i].upgrade(this.amt);
+            this.time += setup[i].itemSpeed;
         }
         return this.amt;
     }
@@ -37,6 +39,7 @@ class Item {
         this.usage = obj.usage;
         this.rarity = obj.rarity;
         this.astralAmt = 0;
+        this.itemSpeed = obj.itemSpeed;
     }
     testFunction() {
         return this.itemName;
@@ -51,6 +54,7 @@ class Item {
     }
     changeAstralAmount(num) {
         this.astralAmt += num;
+        updateAstralDisplay(this.getItemName(), this.astralAmt);
     }
     upgrade(value) {
 
@@ -58,6 +62,12 @@ class Item {
     }
     getItemName() {
         return this.itemName.replace(/\s/g, "").toLowerCase();
+    }
+    hasItem() {
+        return (this.placed > 0 || this.amt > 0);
+    }
+    hasAstral() {
+        return this.astralAmt > 0;
     }
 
 }
