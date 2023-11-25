@@ -52,11 +52,12 @@ const slowLoad = async (num, button) => {
         console.log("entered");
         if (layouts[num][i].amt > 0) {
             console.log("entered2");
-        await sleep(25);
+        await sleep(10);
         setup.push(layouts[num][i]);
         layouts[num][i].changeAmt(-1);
         layouts[num][i].changePlaced(1);
         saveData(layouts[num][i].getItemName());
+        document.getElementById("placedDisplay").innerHTML = setup.length + "/75 Placed";
         }  
     }
     var temp = layouts[num][layouts[num].length - 1];

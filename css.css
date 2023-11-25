@@ -45,8 +45,8 @@ html {
     position: fixed;
     width:15vw;
     top:6.2vh;
-    height:1000px;
-    overflow: auto;
+    height:100%;
+    overflow-y:scroll;
     background-color: white;
 }
 #items {

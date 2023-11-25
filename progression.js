@@ -93,7 +93,7 @@ function awaken() {
         let givingItem = gatherItems(rarities, "Awakened");
         givingItem.changeAmt(1);
         saveData(givingItem.getItemName());
-        document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0";
+        document.getElementById("moneyDisplay").innerHTML = "0" + "<br>" + "+0" + " in 0 ms";
         setProgressionValues(4);
         giveBasics();
         saveAmounts();

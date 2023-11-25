@@ -12,11 +12,17 @@ function createElements(item) {
     let nameDisplay = document.createElement('p');
     nameDisplay.innerHTML = item.itemName;
     nameDisplay.classList = 'itemText';
-    nameDisplay.style = "font-size:1.25vw;"
+    if (item.itemName.length > 30) {
+        nameDisplay.style = "font-size:1.05vw;"
+    } else {
+        nameDisplay.style = "font-size:1.25vw;"
+    }
+    
     tempElement.appendChild(nameDisplay);
     astralNameDisplay = nameDisplay.cloneNode(true);
     astralNameDisplay.innerHTML = "✨Astral " + item.itemName + "✨";
     tempAstralElement.appendChild(astralNameDisplay);
+
     let ownedAndAmountDisplay = document.createElement('p');
     ownedAndAmountDisplay.innerHTML = item.amt + " Owned. " + item.placed + " Placed.";
     ownedAndAmountDisplay.classList = 'itemText';
@@ -36,6 +42,11 @@ function createElements(item) {
     multiDisplay.innerHTML = formatNumber(new Decimal(item.multiplier)) + "x";
     multiDisplay.classList = 'itemText';
     tempElement.appendChild(multiDisplay);
+
+    let timeDisplay = document.createElement('p');
+    timeDisplay.innerHTML = "+" + item.itemSpeed + "ms";
+    timeDisplay.classList = "itemText";
+    tempElement.appendChild(timeDisplay);
 
     let tierDisplay = document.createElement('p');
     tierDisplay.innerHTML = item.tier + " " + item.usage;
@@ -115,29 +126,20 @@ function flashRed(element) {
   }, 100);
 }
 function setProgressionValues(amt) {
-    if (amt == 1) {
+    if (amt > 0) {
         document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
         document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
-    } else if (amt == 2) {
-        document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
-        document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
-        document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
+    } 
+    if (amt > 1) {
+        document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice) + " Ascensions";
         document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
-    } else if (amt == 3) {
-    document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
-    document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
-    document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
-    document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
-    document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice);
-    document.getElementById("renewDisplay").innerHTML = "Renewals: " + formatNumber(renewals);
-    } else {
-        document.getElementById("ascensionButton").innerHTML = "Ascend: " + "<br>" + formatNumber(ascendPrice);
-        document.getElementById("ascensionDisplay").innerHTML = "Ascensions: " + formatNumber(lives);
-        document.getElementById("reviveButton").innerHTML = "Revive: " + "<br>" + formatNumber(revivePrice);
-        document.getElementById("reviveDisplay").innerHTML = "Revivals: " + formatNumber(revivals);
-        document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice);
+    }
+    if (amt > 2) {
+        document.getElementById("renewButton").innerHTML = "Renew: " + "<br>" + formatNumber(renewalPrice) + " Revivals";
         document.getElementById("renewDisplay").innerHTML = "Renewals: " + formatNumber(renewals);
-        document.getElementById("reawakenButton").innerHTML = "Reawaken: " + "<br>" + formatNumber(awakenPrice);
+    } 
+    if (amt > 3) {
+        document.getElementById("reawakenButton").innerHTML = "Reawaken: " + "<br>" + formatNumber(awakenPrice) + " Renewals";
         document.getElementById("reawakenDisplay").innerHTML = "Reawakens: " + formatNumber(awakens);
     }
 }

@@ -212,13 +212,13 @@ function sortByTier(id, arr) {
 let setupValue = new Decimal(0);
 function setSetupValue() {
         setupValue = new Decimal(testOre.goThroughSetup(setup));
-        document.getElementById("moneyDisplay").innerHTML = formatNumber(money) + "<br>" + "+" + formatNumber(setupValue);
+        document.getElementById("moneyDisplay").innerHTML = formatNumber(money) + "<br>" + "+" + formatNumber(setupValue) + " in " + testOre.time + "ms";
         moneyTimer();
     
 }
 function addSetupValueToMoney() {
     money = money.add(setupValue);
-    document.getElementById("moneyDisplay").innerHTML = formatNumber(money) + "<br>" + "+" + formatNumber(setupValue);
+    document.getElementById("moneyDisplay").innerHTML = formatNumber(money) + "<br>" + "+" + formatNumber(setupValue) + " in " + testOre.time + "ms";
     saveAmounts();
 }
 let myTimer = null;
