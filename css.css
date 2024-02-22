@@ -1,81 +1,102 @@
 body,
 html {
-    height:100%;
+    height: 100%;
+}
+button {
+    background-color: #212121;
+    color: white;
+}
+input[type=text] {
+    background-color: #343434;
+    color: white;
 }
 .itemDisplay {
-    background-color:#393939;
-    color:white;
-    font-family:Segoe UI;
+    background-color: #393939;
+    color: white;
+    font-family: Segoe UI;
     box-sizing: border-box;
-    height:18vw;
-    width:21vw!important;
-    font-size:1vw;
-    margin:10px;
-    float:left;
+    height: 18vw;
+    width: 21vw!important;
+    font-size: 1vw;
+    margin: 10px;
+    float: left;
 }
 .itemText {
-    margin:0.5vw;
+    margin: 0.5vw;
 }
 .setupAddButton {
-    font-size:0.25vs;
-    width:5vs;
+    font-size: 0.25vs;
+    width: 5vs;
     align-self: center;
-    margin:5px
+    margin: 5px
 }
 .setupRemoveButton {
-    font-size:0.25vs;
-    width:5vs;
+    font-size: 0.25vs;
+    width: 5vs;
     align-self: center;
-    margin:5px;
+    margin: 5px;
 }
 .buttonDisplay {
-    border-style:outset;
-    margin:0.25vw;
-    width:10vw;
+    border-style: outset;
+    margin: 0.25vw;
+    width: 10vw;
 }
 .layoutDisplay {
-    margin:0.25vw;
-    height:2vw;
-    width:8vw;
+    margin: 0.25vw;
+    /* height: 2vw; */
+    width: 8vw;
 }
 .layoutText {
-    margin:0.1vw;
+    margin: 0.1vw;
 }
 #uiDisplay {
     position: fixed;
-    width:15vw;
-    top:6.2vh;
-    height:100%;
-    overflow-y:scroll;
+    width: 15vw;
+    top: 6.2vh;
+    height: 100%;
+    overflow-y: scroll;
     background-color: white;
 }
 #items {
-    float:right;
-    margin-top:6vh;
+    float: right;
+    margin-top: 6vh;
 }
 .valueDisplay {
     background-color: white;
     position: fixed;
-    float:left;
-    width:100%;
-    height:5%;
-    padding-right:0px;
-    padding-left:0px;
+    float: left;
+    width: 100%;
+    height: 5%;
+    padding-right: 0px;
+    padding-left: 0px;
     border-bottom-style: solid;
 }
 .value {
-    float:left;
-    font-size:1.5vw;
-    margin-right:2vw;
-    font-size:150%;
+    float: left;
+    font-size: 1.5vw;
+    margin-right: 2vw;
+    font-size: 150%;
 }
 .row {
-    height:5%;
+    height: 5%;
 }
 .h-95 {
-    height:95%;
+    height: 95%;
 }
 .topDisplay {
-    width:100%;
-    height:25%;
+    width: 100%;
+    height: 25%;
+}
+
+@media (prefers-color-scheme: dark) {
+    html,
+    body,
+    .row,
+    #mainArea,
+    .valueDisplay,
+    .col-2,
+    #uiDisplay {
+        background-color: #0d0d0d;
+        color: white;
+    }
 }

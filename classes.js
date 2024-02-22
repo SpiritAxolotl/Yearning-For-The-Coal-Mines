@@ -5,23 +5,18 @@ class Ore {
         this.buffedEffects = [];
     }
     addBuffedEffect(effect) {
-        if (this.buffedEffects.indexOf(effect) == -1) {
+        if (this.buffedEffects.indexOf(effect) === -1)
             this.buffedEffects.push(effect);
-        }
     }
     effectIsBuffed(effect) {
-        if (this.buffedEffects.indexOf(effect) != -1) {
-            return true;
-        }
-        return false;
+        return this.buffedEffects.indexOf(effect) !== -1;
     }
     goThroughSetup(setup) {
         this.time = 0;
-        if (setup.length == 0) {
+        if (setup.length === 0)
             return 0;
-        }
         this.amt = new Decimal(1);
-        for (var i = 0; i < setup.length; i++) {
+        for (let i = 0; i < setup.length; i++) {
             this.amt = setup[i].upgrade(this.amt);
             this.time += setup[i].itemSpeed;
         }
@@ -57,7 +52,6 @@ class Item {
         updateAstralDisplay(this.getItemName(), this.astralAmt);
     }
     upgrade(value) {
-
         return value.multiply(this.multiplier);
     }
     getItemName() {
@@ -89,9 +83,8 @@ class EffectGiver extends Item {
         this.type = "EffectGiver";
     }
     upgrade(value) {
-        if (testOre.effectIsBuffed(this.effect)) {
+        if (testOre.effectIsBuffed(this.effect))
             return super.upgrade(value).multiply(new Decimal(1.5));
-        }
         return super.upgrade(value);
     }
 }
